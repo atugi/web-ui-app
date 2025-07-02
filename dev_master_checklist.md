@@ -10,7 +10,7 @@
 ## 0. プロジェクト初期化
 - [x] **Git 初期化** `git init` → `.gitignore` 生成（Python 用）
 - [x] **GitHub リポジトリ作成** → `origin` 登録 → `main` ブランチ push
-- [ ] **ライセンス & README 雛形** 作成
+- [x] **ライセンス & README 雛形** 作成
 
 ## 1. 環境セットアップ
 - [ ] **Python 仮想環境** `python -m venv .venv` & activate
