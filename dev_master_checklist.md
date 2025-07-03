@@ -14,7 +14,7 @@
 
 ## 1. 環境セットアップ
 - [x] **Python 仮想環境** `python -m venv .venv` & activate
-- [ ] **依存ファイル** `pyproject.toml` *or* `requirements.txt` 作成
+- [x] **依存ファイル** `pyproject.toml` *or* `requirements.txt` 作成
 - [ ] **pre-commit 導入** (`black`, `ruff`, `mypy`)
   ```bash
   pip install pre-commit black ruff mypy
