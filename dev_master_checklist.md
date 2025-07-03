@@ -24,7 +24,7 @@
 ## 2. データ契約 (スキーマ)
 - [x] `schemas/csv_columns.json` に必須11列を書き込む
 - [x] `docs/CONTRACT.md` で列説明・禁止変更事項を定義
-- [ ] データロード関数でスキーマ検証を組み込む
+- [x] データロード関数でスキーマ検証を組み込む
 
 ## 3. ゴールデンデータ & テスト基盤
 - [ ] Notebook で正解出力を CSV 保存 (`tests/data/expected_*.csv`)
