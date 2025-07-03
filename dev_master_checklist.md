@@ -13,7 +13,7 @@
 - [x] **ライセンス & README 雛形** 作成
 
 ## 1. 環境セットアップ
-- [ ] **Python 仮想環境** `python -m venv .venv` & activate
+- [x] **Python 仮想環境** `python -m venv .venv` & activate
 - [ ] **依存ファイル** `pyproject.toml` *or* `requirements.txt` 作成
 - [ ] **pre-commit 導入** (`black`, `ruff`, `mypy`)
   ```bash
