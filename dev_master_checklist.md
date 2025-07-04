@@ -27,7 +27,7 @@
 - [x] データロード関数でスキーマ検証を組み込む
 
 ## 3. ゴールデンデータ & テスト基盤
-- [ ] Notebook で正解出力を CSV 保存 (`tests/data/expected_*.csv`)
+- [x] Notebook で正解出力を CSV 保存 (`tests/data/expected_*.csv`)
 - [ ] **pytest** 導入 (`pip install pytest`)
   - [ ] 成功ケース
   - [ ] 失敗/境界ケース
