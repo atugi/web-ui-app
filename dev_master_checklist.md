@@ -29,8 +29,8 @@
 ## 3. ゴールデンデータ & テスト基盤
 - [x] Notebook で正解出力を CSV 保存 (`tests/data/expected_*.csv`)
 - [x] **pytest** 導入 (`pip install pytest`)
-  - [ ] 成功ケース
-  - [ ] 失敗/境界ケース
+  - [x] 成功ケース
+  - [x] 失敗/境界ケース
 - [ ] **mypy strict** 設定
 - [ ] **ruff** 設定 (`pyproject.toml`)
 
