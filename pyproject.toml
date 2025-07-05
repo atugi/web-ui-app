@@ -1,0 +1,9 @@
+﻿[tool.mypy]
+python_version = "3.11"
+strict = true
+mypy_path = ["src"]
+exclude = ["tests/data"]
+ignore_missing_imports = true    # pandas など stub 無ライブラリを無視
+
+[tool.mypy-tests.*]
+strict = false                   # tests は緩める
