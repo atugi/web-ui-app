@@ -31,8 +31,8 @@
 - [x] **pytest** 導入 (`pip install pytest`)
   - [x] 成功ケース
   - [x] 失敗/境界ケース
-- [ ] **mypy strict** 設定
-- [ ] **ruff** 設定 (`pyproject.toml`)
+- [x] **mypy strict** 設定
+- [x] **ruff** 設定 (`pyproject.toml`)
 
 ## 4. CI / CD
 - [ ] GitHub Actions: `.github/workflows/ci.yml`
