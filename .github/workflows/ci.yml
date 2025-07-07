@@ -1,68 +1,84 @@
-# .github/workflows/ci.yml
 name: CI
 
 on:
-  pull_request:            # PR ごとに自動実行
-    branches: [ main ]
-  push:                    # main への直 push も保険で回す
-    branches: [ main ]
+  push:
+    branches: [main]           # main への push
+  pull_request:
+    branches: [main]           # main 向け PR
+
+permissions:
+  contents: read               # セキュア実行用の最小権限
 
 jobs:
+  # ----------------------------
+  # ① pre-commit（black / ruff / mypy など）
+  # ----------------------------
   pre-commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-      - name: Install dependencies
+          python-version: '3.11'
+      - name: Install pre-commit hooks
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install mypy ruff pre-commit pandas-stubs
-      - name: Run pre-commit (ruff/black/mypy etc.)
-        run: pre-commit run --all-files --show-diff-on-failure
+          python -m pip install pre-commit
+      - name: Run pre-commit
+        run: pre-commit run --all-files
 
+  # ----------------------------
+  # ② 単体テスト（pytest）
+  # ----------------------------
   tests:
+    needs: pre-commit          # pre-commit 成功後に実行
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pandas-stubs
+          python -m pip install -r requirements.txt
+          python -m pip install pytest
       - name: Run pytest
         run: pytest -q
 
+  # ----------------------------
+  # ③ 型チェック（mypy）
+  # ----------------------------
   mypy:
+    needs: tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install mypy pandas-stubs
+          python -m pip install -r requirements.txt
+          python -m pip install mypy pandas-stubs
       - name: Run mypy
-        run: mypy .
+        run: mypy --explicit-package-bases .
 
+  # ----------------------------
+  # ④ Lint / フォーマット（ruff）
+  # ----------------------------
   ruff:
+    needs: tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
       - name: Install ruff
         run: |
           python -m pip install --upgrade pip
-          pip install ruff
-      - name: Ruff check
-        run: ruff check .
+          python -m pip install ruff
+      - name: Ruff check (auto-fix)
+        run: ruff check --fix .
