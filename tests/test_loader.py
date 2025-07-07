@@ -13,7 +13,7 @@ from pandas.testing import assert_frame_equal
 from src.loader import (
     SCHEMA_PATH,
     load_csv_with_schema,
-)  # isort: skip  (相対 import を維持)
+)
 
 # ──────────────────────────────────────────────
 # ★ ファイルパス定義
