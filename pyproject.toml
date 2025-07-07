@@ -1,23 +1,29 @@
 # pyproject.toml
+############################################
+# 1. mypy
+############################################
 [tool.mypy]
-python_version = "3.11"
-strict         = true
-mypy_path      = ["src"]
-exclude        = ["tests/data"]
-ignore_missing_imports = true  # pandas など stub の無いライブラリを無視
+python_version        = "3.11"
+strict                = true
+exclude               = ["tests/data"]
+ignore_missing_imports = true   # pandas など stub が無いライブラリを無視
+explicit_package_bases = true   # “src/…” をトップレベル扱いにさせない
+# ↑ ↑ ここが重複モジュール検出（loader / src.loader）の対策ポイント
 
 [[tool.mypy.overrides]]
 module = ["tests.*"]
-strict = false                  # tests 配下は緩める
+strict = false                    # tests 配下は緩める
 
-# ---------------- Ruff ----------------
+############################################
+# 2. Ruff
+############################################
 [tool.ruff]
 target-version = "py311"
 line-length    = 100
 exclude        = ["tests/data"]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B"]    # E=pycodestyle, F=pyflakes, I=isort, B=bugbear
+select = ["E", "F", "I", "B"]      # E=pycodestyle, F=pyflakes, I=isort, B=bugbear
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101"]             # assert 使用を許可
+"tests/*" = ["S101"]               # assert 使用を許可
