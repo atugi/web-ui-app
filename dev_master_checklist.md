@@ -35,9 +35,9 @@
 - [x] **ruff** 設定 (`pyproject.toml`)
 
 ## 4. CI / CD
-- [ ] GitHub Actions: `.github/workflows/ci.yml`
+- [x] GitHub Actions: `.github/workflows/ci.yml`
   - pytest, mypy, ruff, pre-commit の全ジョブ
-- [ ] main マージ時に CI 緑必須設定
+- [x] main マージ時に CI 緑必須設定
 
 ## 5. ロギング & 例外処理
 - [ ] `logging` 基本設定 (file & console)
