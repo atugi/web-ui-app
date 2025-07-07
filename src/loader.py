@@ -1,6 +1,7 @@
 # src/loader.py
 import json
 from pathlib import Path
+
 import pandas as pd
 
 SCHEMA_PATH = Path(__file__).parent.parent / "schemas" / "csv_columns.json"
