@@ -1,7 +1,8 @@
 """
-Central logging config – import once, then just
-    from logging import getLogger
-    log = getLogger(__name__)
+Centralised logging configuration.
+
+- INFO 以上をコンソールにカラー表示（colorlog）
+- DEBUG 以上を logs/app.log へローテーション保存（1 MB × 5 ファイル）
 """
 
 from __future__ import annotations
@@ -10,52 +11,66 @@ import logging
 import logging.config
 from pathlib import Path
 
-# ── ログファイル保存先 ────────────────────────────────
-LOG_DIR = Path("logs")
+from colorlog import ColoredFormatter
+
+# --------------------------------------------------------------------------- #
+# パス準備                                                                     #
+# --------------------------------------------------------------------------- #
+LOG_DIR = Path(__file__).parent.parent / "logs"
 LOG_DIR.mkdir(exist_ok=True)
 
-LOG_FILE = LOG_DIR / "app.log"
-
-# ── dictConfig 定義 ──────────────────────────────────
-LOGGING_DICT = {
+# --------------------------------------------------------------------------- #
+# dictConfig 定義                                                              #
+# --------------------------------------------------------------------------- #
+LOGGING_DICT: dict = {
     "version": 1,
     "disable_existing_loggers": False,
     "formatters": {
-        "fmt": {
-            "format": "%(asctime)s | %(levelname)-8s | %(name)s:%(lineno)d — %(message)s"
-        },
-        "color": {  # human-friendly colorized console
-            "format": "%(log_color)s%(levelname)-8s%(reset)s | %(message)s",
-            "()": "colorlog.ColoredFormatter",
+        "color": {
+            "()": ColoredFormatter,
+            # ★ 100 文字を超えないよう 2 行に折り返し（PEP 8 / Ruff E501）
+            "format": (
+                "%(log_color)s[%(asctime)s] %(levelname)-8s "
+                "%(name)s:%(lineno)d | %(message)s"
+            ),
             "log_colors": {
                 "DEBUG": "cyan",
                 "INFO": "green",
                 "WARNING": "yellow",
                 "ERROR": "red",
-                "CRITICAL": "purple",
+                "CRITICAL": "red,bold",
             },
+        },
+        "simple": {
+            "format": "[%(asctime)s] %(levelname)-8s %(name)s:%(lineno)d | %(message)s",
         },
     },
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
-            "formatter": "color",
             "level": "INFO",
+            "formatter": "color",
+            "stream": "ext://sys.stdout",
         },
         "file": {
             "class": "logging.handlers.RotatingFileHandler",
-            "filename": str(LOG_FILE),
-            "maxBytes": 1_000_000,
-            "backupCount": 3,
-            "encoding": "utf-8",
-            "formatter": "fmt",
             "level": "DEBUG",
+            "formatter": "simple",
+            "filename": str(LOG_DIR / "app.log"),
+            "maxBytes": 1_000_000,  # 1 MB
+            "backupCount": 5,
+            "encoding": "utf-8",
         },
     },
-    "root": {  # 全体のデフォルト
-        "handlers": ["console", "file"],
+    "root": {
         "level": "DEBUG",
+        "handlers": ["console", "file"],
     },
 }
 
-logging.config.dictConfig(LOGGING_DICT)
+# --------------------------------------------------------------------------- #
+# API                                                                          #
+# --------------------------------------------------------------------------- #
+def configure_logging() -> None:
+    """Apply dictConfig at import-time."""
+    logging.config.dictConfig(LOGGING_DICT)
