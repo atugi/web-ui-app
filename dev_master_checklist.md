@@ -40,15 +40,15 @@
 - [x] main マージ時に CI 緑必須設定
 
 ## 5. ロギング & 例外処理
-- [ ] `logging` 基本設定 (file & console)
-- [ ] Streamlit エラー表示 `st.error` + トレースバック
+- [x] `logging` 基本設定 (file & console)
+- [x] Streamlit エラー表示 `st.error` + トレースバック
 
 ## 6. 設定 & パス管理
-- [ ] `settings.py` にパス定義
+- [] `settings.py` にパス定義
 - [ ] `.env` にローカル差異を書く (`python-dotenv`)
 
 ## 7. UI プロトタイプ
-- [ ] `pip install streamlit`
+- [x] `pip install streamlit`
 - [ ] `app.py` で
   - ファイルアップロード
   - “Hello World” 表示ボタン
