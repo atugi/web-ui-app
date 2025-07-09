@@ -1,18 +1,39 @@
-# pyproject.toml
+############################################
+# Project metadata
+############################################
+[project]
+name = "messe-mitaka-ui"
+version = "0.1.0"
+description = "Prototype web-UI app with logging, dotenv, and Streamlit"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas ~= 2.3",
+    "python-dotenv ~= 1.1",
+    "streamlit ~= 1.33",
+    # テスト & 型
+    "pytest ~= 8.2",
+]
+
+############################################
+# Editable install (src レイアウト)
+############################################
+[tool.setuptools.packages.find]
+where = ["src"]
+
 ############################################
 # 1. mypy
 ############################################
 [tool.mypy]
-python_version        = "3.11"
-strict                = true
-exclude               = ["tests/data"]
-ignore_missing_imports = true   # pandas など stub が無いライブラリを無視
-explicit_package_bases = true   # “src/…” をトップレベル扱いにさせない
-# ↑ ↑ ここが重複モジュール検出（loader / src.loader）の対策ポイント
+python_version          = "3.11"
+strict                  = true
+exclude                 = ["tests/data"]
+ignore_missing_imports  = true  # pandas など stub が無いライブラリを無視
+explicit_package_bases  = true  # “src/…” をトップレベル扱いにさせない
 
 [[tool.mypy.overrides]]
 module = ["tests.*"]
-strict = false                    # tests 配下は緩める
+strict = false                     # tests 配下は緩める
 
 ############################################
 # 2. Ruff
@@ -23,7 +44,7 @@ line-length    = 100
 exclude        = ["tests/data"]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B"]      # E=pycodestyle, F=pyflakes, I=isort, B=bugbear
+select = ["E", "F", "I", "B"]       # E=pycodestyle, F=pyflakes, I=isort, B=bugbear
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101"]               # assert 使用を許可
+"tests/*" = ["S101"]                # assert 使用を許可
