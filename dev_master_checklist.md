@@ -49,7 +49,7 @@
 
 ## 7. UI プロトタイプ
 - [x] `pip install streamlit`
-- [ ] `app.py` で
+- [x] `app.py` で
   - ファイルアップロード
   - “Hello World” 表示ボタン
 
