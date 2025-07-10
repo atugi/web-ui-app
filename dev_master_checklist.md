@@ -44,8 +44,8 @@
 - [x] Streamlit エラー表示 `st.error` + トレースバック
 
 ## 6. 設定 & パス管理
-- [ ] `settings.py` にパス定義
-- [ ] `.env` にローカル差異を書く (`python-dotenv`)
+- [x] `settings.py` にパス定義
+- [x] `.env` にローカル差異を書く (`python-dotenv`)
 
 ## 7. UI プロトタイプ
 - [x] `pip install streamlit`
