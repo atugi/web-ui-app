@@ -55,7 +55,7 @@
 
 ## 8. Docker / 配布
 - [x] `Dockerfile` 作成（python:3.12-slim など）
-- [ ] `docker-compose.yml` （optional）
+- [x] `docker-compose.yml` （optional）
   - web (Streamlit)
   - db (if future)
 
