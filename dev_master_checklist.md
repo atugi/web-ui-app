@@ -62,7 +62,7 @@
 ## 9. ドキュメント整備
 - [x] `README.md` にセットアップ3行・起動1行
 - [x] CHANGELOG.md 初版
-- [ ] ISSUE & PR テンプレ GitHub に配置
+- [x] ISSUE & PR テンプレ GitHub に配置
 
 ## 10. 例示的開発サイクル
 - [ ] **Issue** 登録例: “累積差枚グラフ表示”
