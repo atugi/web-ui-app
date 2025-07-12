@@ -60,7 +60,7 @@
   - db (if future)
 
 ## 9. ドキュメント整備
-- [ ] `README.md` にセットアップ3行・起動1行
+- [x] `README.md` にセットアップ3行・起動1行
 - [ ] CHANGELOG.md 初版
 - [ ] ISSUE & PR テンプレ GitHub に配置
 

@@ -1,114 +1,47 @@
-\# web-ui-app
+# web-ui-app
 
-
-
-ローカルで \*\*Streamlit\*\* を使い、パチスロ差枚データなどを可視化する個人用ツール。  
-
-Jupyter Notebook で動かしていたミニアプリをモジュール化し、この Web UI に統合していく。
-
-
+ローカル PC で **Streamlit** を使い  
+パチスロ差枚データなどを “すぐ可視化” する **完全個人向けツール** です。  
+「ポチッ → ブラウザ表示」までをワンコマンド化しています。
 
 ---
 
+## 1. 30 秒クイックスタート
+
+## 1-A. Python で動かす (3 行 + 1 行)
+
+```powershell
+# ① 仮想環境をつくって有効化
+python -m venv .venv && .\.venv\Scripts\activate
+# ② 依存をインストール
+pip install -r requirements.txt      # ← ここまでセットアップ 3 行
+# ③ アプリ起動
+streamlit run app.py                 # ← 起動 1 行
 
 
-\## セットアップ（Windows・初回だけ）
+■1-B. 依存ゼロで動かす (Docker 2 行)
+# ① 初回かバージョン更新時だけビルド
+docker build -t messe_ui:0.3 .
+# ② 実行 & ブラウザ起動
+docker run --rm -p 8501:8501 --name messe_ui messe_ui:0.3 ^
+  && start http://localhost:8501/
+
+■2. プロジェクト構成
+
+messe_mitaka_UI/
+├─ data/              サンプル CSV 等
+├─ src/               読み込み・加工・描画ロジック
+├─ tests/             Pytest
+├─ app.py             Streamlit エントリポイント
+├─ Dockerfile         ビルド定義
+├─ requirements.txt   最小依存ライブラリ
+└─ README.md          このファイル
 
 
+■3. 開発メモ（自分用）
 
-> “忘れたらこの README を ChatGPT に貼って『手順 1 から実行したい』と伝えれば OK”
-
-
-
-```bash
-
-\# 1. PowerShell でプロジェクトフォルダへ
-
-cd C:\\messe\_mitaka\_UI
-
-
-
-\# 2. 仮想環境
-
-python -m venv .venv
-
-.venv\\Scripts\\activate
-
-
-
-\# 3. 依存パッケージ
-
-pip install streamlit pandas
-
-
-
-\# 4. 起動
-
-streamlit run app.py
-
-
-
-------------------
-自分用メモ
--------------------
-# 編集後
-
-git add dev\_master\_checklist.md
-
-git commit -m "docs: update checklist"
-
+git add README.md dev_master_checklist.md
+git commit -m "docs: update README & checklist"
 git push
-
-
-
-
-
-
-
-
-
-
-
-\#### 使い方メモ
-
-\- \*\*上の 1〜4 行をコピペすれば “動くまで” 辿りつける\*\*、を目標に構成しています。  
-
-\- 手順を忘れたら \*\*この README の「セットアップ」節\*\* を丸ごと ChatGPT に渡して  
-
-&nbsp; “このコマンドを１行ずつ実行したい、次に何を押せばいい？” と聞けば、同じ流れで案内できます。
-
-
-
----
-
-
-
-\### 3. 次のアクション
-
-
-
-1\. エディタで `README.md` を作成し、上の内容を貼り付ける  
-
-2\. \*\*ライセンスを置かない場合\*\* は README だけコミット  
-
-&nbsp;  ```powershell
-
-&nbsp;  git add README.md
-
-&nbsp;  git commit -m "docs: add minimal README"
-
-&nbsp;  git push
-
-
-
-
-
-
-
-
-
-
-
-
 
 
