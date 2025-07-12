@@ -54,7 +54,7 @@
   - “Hello World” 表示ボタン
 
 ## 8. Docker / 配布
-- [ ] `Dockerfile` 作成（python:3.12-slim など）
+- [x] `Dockerfile` 作成（python:3.12-slim など）
 - [ ] `docker-compose.yml` （optional）
   - web (Streamlit)
   - db (if future)
