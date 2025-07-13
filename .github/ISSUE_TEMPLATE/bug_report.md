@@ -1,4 +1,4 @@
-﻿---
+---
 name: Bug Report
 about: バグ・不具合の報告はこちら
 title: "[Bug] "

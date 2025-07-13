@@ -1,4 +1,4 @@
-﻿---
+---
 name: Feature Request
 about: 機能追加・改善要望はこちら
 title: "[Feat] "
