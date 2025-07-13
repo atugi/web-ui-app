@@ -1,0 +1,3 @@
+# .github/ISSUE_TEMPLATE/config.yml
+blank_issues_enabled: false        # “Open a blank issue” ボタンを出さない
+contact_links: []                  # 追加のリンクが不要なら空リストで
