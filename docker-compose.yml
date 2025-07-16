@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  web:
+    image: messe_ui:0.4          # 最新タグ
+    container_name: messe_ui
+    ports:
+      - "8501:8501"
+    restart: unless-stopped      # 自動再起動ポリシー
+    environment:
+      # 例：Streamlit のタイトル書き換えなど
+      - STREAMLIT_SERVER_HEADLESS=true
+    # db を追加する場合は depends_on で待ち合わせ可
