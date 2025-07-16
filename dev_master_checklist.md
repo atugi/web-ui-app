@@ -65,10 +65,10 @@
 - [x] ISSUE & PR テンプレ GitHub に配置
 
 ## 10. 例示的開発サイクル
-- [ ] **Issue** 登録例: “累積差枚グラフ表示”
-- [ ] **feature ブランチ** `git checkout -b feature-cumsum`
-- [ ] コード追加 → pytest 緑確認
-- [ ] **PR** 作成 → CI 緑 → レビュー → main マージ
+- [x] **Issue** 登録例: “累積差枚グラフ表示”
+- [x] **feature ブランチ** `git checkout -b feature-cumsum`
+- [x] コード追加 → pytest 緑確認
+- [x] **PR** 作成 → CI 緑 → レビュー → main マージ
 
 ---
 
