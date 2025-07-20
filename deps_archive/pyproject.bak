@@ -1,0 +1,23 @@
+﻿# pyproject.toml
+[tool.mypy]
+python_version = "3.11"
+strict         = true
+mypy_path      = ["src"]
+exclude        = ["tests/data"]
+ignore_missing_imports = true  # pandas など stub の無いライブラリを無視
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+strict = false                  # tests 配下は緩める
+
+# ---------------- Ruff ----------------
+[tool.ruff]
+target-version = "py311"
+line-length    = 100
+exclude        = ["tests/data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]    # E=pycodestyle, F=pyflakes, I=isort, B=bugbear
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]             # assert 使用を許可

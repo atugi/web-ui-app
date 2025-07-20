@@ -30,7 +30,7 @@
 
 | # | 状態 | 優先 | タスク | 目的 / 完了条件 / 補足 |
 |---|-------|------|--------|------------------------|
-| 1 | [ ] ✅ | ★★★ | 依存の“正”を一つに統一（`requirements.txt` か `pyproject.toml`） | どこを編集するか迷わない。不要な requirements* を削除 or アーカイブ。 |
+| 1 | [x] ✅ | ★★★ | 依存の“正”を一つに統一（`requirements.txt` か `pyproject.toml`） | どこを編集するか迷わない。不要な requirements* を削除 or アーカイブ。 |
 | 2 | [ ] ✅ | ★★★ | `src/ingest/` へコード移動 / `main.py` に `main()` 定義 | 構造固定。`python -m ingest.main` が動く。 |
 | 3 | [ ] ✅ | ★★★ | logging 導入 (print → logger) | 実行開始/件数/警告/終了が INFO / WARNING / ERROR で出る。 |
 | 4 | [ ] ✅ | ★★★ | 簡易スキーマ検証 | 期待列との差分を検査し、欠損/余分列があれば停止 or 警告。 |

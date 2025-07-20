@@ -1,0 +1,7 @@
+﻿-r requirements-prod.txt
+streamlit==1.46.1
+python-dotenv==1.0.1
+pytest
+colorlog==6.9.0
+GitPython==3.1.44
+# ここに開発時のみ欲しい追加ライブラリを列挙
